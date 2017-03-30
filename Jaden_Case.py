@@ -7,7 +7,7 @@ def Jaden_Case(s):
     # 함수를 완성하세요
 
     lists = s.lower().split()
-    lists = [i.replace(i[0], i[0].upper(), 1) for i in lists]
+    lists = [i.replace(i[0], i[0].upper()) for i in lists]
     return ' '.join(lists)
 
 # 아래는 테스트로 출력해 보기 위한 코드입니다.
