@@ -10,11 +10,12 @@
 예를 들어 4가 입력된다면, 5를 반환해 주면 됩니다.
 """
 def jumpCase(num):
-    answer = 1
-
-    for i in range(1,num):
-        answer = answer*2 + i -1
-    return answer
+    answer = 0
+    if num==1:
+        return 1
+    elif num==2:
+        return 2
+    return jumpCase(num-1)+jumpCase(num-2)
 
 #아래는 테스트로 출력해 보기 위한 코드입니다.
 print(jumpCase(4))
