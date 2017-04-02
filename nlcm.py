@@ -6,33 +6,24 @@ nlcm 함수를 통해 n개의 숫자가 입력되었을 때, 최소공배수를 
 예를들어 [2,6,8,14] 가 입력된다면 168을 반환해 주면 됩니다.
 """
 #미해결
-def gcd(a, b, num):
-    while b:
-        a, b = b, a % b
-    if a != 0 or a != 1:
-        n1 = []
-        for i in range(len(num)):
-            if num[i] % a == 0:
-                n1.append((int)(num[i]//a))
-            else:
-                n1.append(num[i])
-        return n1, a
-    return num, 1
-
 def nlcm(num):
     n1 = 1
-    answer = 1
+    count = 0
+    lista = []
     for i in range(len(num)):
-        for j in range(i+1, len(num)):
-            if(num[i] != 0 and num[j] != 0):
-                tuple = gcd(num[i], num[j], num)
-                num = tuple[0]
-                n1 = tuple[1]*n1
-    for i in num:
-        answer *= i
-    return answer*n1
+        for j in range(len(num)):
+            a = num[i]
+            b = num[j]
+            
+            while b:
+            	a, b = b, a % b
+            n1 = a * n1
+            for k in range(len(num)):
+                if num[k] % a == 0:
+                    num.remove(num[k])
+                    num.insert(k-1, num[k]//a)
 
-
-
+        print(num)
+    return n1
 # 아래는 테스트로 출력해 보기 위한 코드입니다.
-print(nlcm([84, 71, 76, 59, 63, 12, 62, 66, 18, 26]));
+print(nlcm([1,6,8,14]));
