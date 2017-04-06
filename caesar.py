@@ -12,13 +12,16 @@ A = 65 ~ 90
 #미해결
 def caesar(s, n):
     list = []
-    for i in range(len(s)):
-        m = ord(s[i])
+    for i in s:
+        m = ord(i)
         if m <= 90:
-            list.append(chr((m-65+n)%25+65))
+            if m == 32:
+                list.append(" ")
+            else:
+                list.append(chr((m-65+n)%26+65))
         else:
-            list.append(chr((m-97+n)%25+97))
-    return " ".join(list)
+            list.append(chr((m-97+n)%26+97))
+    return "".join(list)
 # 실행을 위한 테스트코드입니다.
 
-print('s는 "a B z", n은 4인 경우: ' + caesar("a B z", 4))
+print('s는 "a B z", n은 4인 경우: ' + caesar("ua AqNtFiXd yzBipuqkBHPgOHqMJufPuCgBQZh l itlKIy", 4))
