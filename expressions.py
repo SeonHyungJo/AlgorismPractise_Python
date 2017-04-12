@@ -12,7 +12,18 @@
 
 def expressions(num):
     answer = 0
-
+    n1 = 1
+    n2 = num
+	for i in range((int)(num)/2):
+        while(True):
+            n2 -= i
+            if n2 == 0:
+                answer += 1
+                break
+            if n2 < 0:
+                break
+            i += 1
+        print(i)
     return answer
 
 
