@@ -12,20 +12,35 @@
 
 def expressions(num):
     answer = 0
-    n1 = 1
-    n2 = num
-	for i in range((int)(num)/2):
+    for i in range(1,num+1):
+        n = i
+        n1 = num
         while(True):
-            n2 -= i
-            if n2 == 0:
+            n1 -= n
+            if n1 == 0:
                 answer += 1
                 break
-            if n2 < 0:
+            if n1 < 0:
                 break
-            i += 1
-        print(i)
+            n += 1
     return answer
 
 
 # 아래는 테스트로 출력해 보기 위한 코드입니다.
 print(expressions(15));
+
+"""
+다른풀이
+def expressions(num):
+    answer = 0
+    for i in range(1, num + 1):
+        s = 0
+        while s < num:
+            s += i
+            i += 1
+        if s == num:
+            answer += 1
+
+
+    return answer
+"""
