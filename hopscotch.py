@@ -11,17 +11,26 @@
 의 땅이 있다면, 영희는 각 줄에서 (5), (7), (4) 땅을 밟아 16점을 최고점으로 받을 수 있으며, hopscotch 함수에서는 16을 반환해주면 됩니다.
 
 """
-#미해결
-
+#결과값이 이상하지만 통과할때가 있음(오류 잡아내야함)
 def hopscotch(board, size):
-    result = max(board[0])
-    for i in range(1, size):
-        if board[i].index(max(board[i])) == board[i-1].index(max(board[i-1])):
-            board[i].remove(max(board[i]))
-        result += max(board[i])
+    result = 0
+    m = max(board[0])
+    for i in range(size):
+        count = 0
+        if i > 0:
+            board[i].pop(board[i-1].index(m))
+            board[i].insert(board[i-1].index(m),0)
+        for j in range(4):
+            if max(board[i]) == board[i][j]:
+                count += 1
+        if count >= 2 and i != size-1:
+            board[i].pop(board[i+1].index(max(board[i+1])))
+            board[i].insert(board[i+1].index(max(board[i+1])),0)
+        m = max(board[i])
+        result += m
     return result
 
 
 #아래는 테스트로 출력해 보기 위한 코드입니다.
-board =  [[8, 6, 5, 10], [9, 1, 2, 1], [2, 6, 7, 10], [10, 3, 1, 10], [6, 10, 10, 10], [9, 6, 5, 5], [8, 3, 2, 2], [5, 3, 1, 9], [10, 7, 4, 3], [5, 3, 5, 7]]
-print(hopscotch(board, 3))
+board =  [[6, 10, 1, 1], [6, 4, 2, 1], [3, 1, 9, 9], [10, 5, 3, 2], [8, 9, 4, 6], [8, 3, 10, 2], [5, 4, 4, 5], [2, 5, 5, 1], [7, 8, 3, 1], [3, 6, 9, 6]]
+print(hopscotch(board, 10))
