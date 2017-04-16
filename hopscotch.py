@@ -9,13 +9,19 @@
 5 6 7 8
 4 3 2 1
 의 땅이 있다면, 영희는 각 줄에서 (5), (7), (4) 땅을 밟아 16점을 최고점으로 받을 수 있으며, hopscotch 함수에서는 16을 반환해주면 됩니다.
+
 """
+#미해결
+
 def hopscotch(board, size):
-    result = 0
-    # 땅따먹기 게임으로 얻을 수 있는 최대 점수는?
+    result = max(board[0])
+    for i in range(1, size):
+        if board[i].index(max(board[i])) == board[i-1].index(max(board[i-1])):
+            board[i].remove(max(board[i]))
+        result += max(board[i])
     return result
 
 
 #아래는 테스트로 출력해 보기 위한 코드입니다.
-board =  [[ 1, 2, 3, 5 ], [ 5, 6, 7, 8 ], [4, 3, 2, 1]]
+board =  [[8, 6, 5, 10], [9, 1, 2, 1], [2, 6, 7, 10], [10, 3, 1, 10], [6, 10, 10, 10], [9, 6, 5, 5], [8, 3, 2, 2], [5, 3, 1, 9], [10, 7, 4, 3], [5, 3, 5, 7]]
 print(hopscotch(board, 3))
