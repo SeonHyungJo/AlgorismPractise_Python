@@ -15,6 +15,7 @@
 def hopscotch(board, size):
     result = 0
     m = max(board[0])
+    id = board[0].index(max(board[0]))
     for i in range(size):
         count = 0
         if i > 0:
@@ -27,6 +28,8 @@ def hopscotch(board, size):
             board[i].pop(board[i+1].index(max(board[i+1])))
             board[i].insert(board[i+1].index(max(board[i+1])),0)
         m = max(board[i])
+        id = board[i].index(max(board[i]))
+        print(board[i])
         result += m
     return result
 
